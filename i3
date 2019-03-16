@@ -1,1 +1,0 @@
-/home/monir/Work/dostokhan/utils/dotfiles/.i3

@@ -1,1 +1,9 @@
-/home/monir/Work/dostokhan/utils/dotfiles/.vimrc.bundles.local
+Bundle 'maksimr/vim-jsbeautify'
+Plugin 'mxw/vim-jsx'
+Plugin 'othree/yajs.vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'nicwest/QQ.vim'
+Plugin 'yuttie/comfortable-motion.vim'
+Plugin 'editorconfig/editorconfig-vim'
+
+Plugin 'w0rp/ale'

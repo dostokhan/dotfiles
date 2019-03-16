@@ -1,1 +1,164 @@
-/home/monir/Work/dostokhan/utils/dotfiles/.vimrc.local
+UnBundle 'kchmck/vim-coffee-script'
+UnBundle 'scrooloose/syntastic'
+
+set fileencoding=utf-8
+set encoding=utf-8
+
+set nofoldenable
+set nospell
+"colorscheme blueshift
+colorscheme solarized
+
+" no backup, no swap"
+set nobackup
+" set backupdir=~/.vimtemp
+set noswapfile
+
+
+" efficient shortcuts
+nnorema ; :
+" clear highlighted search matches
+nmap <slient> ,/ :nohlsearch<CR>
+" for saving files which require root privileges"
+cmap w!! w !sudo tee % >/dev/null
+
+"
+"disable indentation white spaces coloring
+let g:indent_guides_enable_on_vim_startup = 0
+
+" ##############################
+" ### ALE ######################
+" ##############################
+
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+" Enable ESLint only for JavaScript.
+let g:ale_linters = {'javascript': ['eslint']}
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+
+" show errors on save
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_text_changed = 1
+let g:ale_open_list = 1
+
+" ###############################
+" # Syntastic ###################
+" ###############################
+
+"enable linting for using syntastic plugin
+" let g:syntastic_mode_map = { 'mode': 'active',
+"                             \ 'active_filetypes': ['javascript', 'php', 'python'],
+"                             \ 'passive_filetypes': ['html', 'css'] }
+
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list=1
+" let g:syntastic_auto_loc_list=1
+" let g:syntastic_check_on_open=0
+" let g:syntastic_check_on_wq=0
+" let g:syntastic_check_on_w=1
+" let g:syntastic_javascript_checkers = ['eslint_d']
+
+" let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
+" let g:syntastic_php_phpcs_args='--standard=psr2'
+" let g:syntastic_php_phpmd_post_args = 'cleancode,codesize,controversial,design,unusedcode'
+
+
+" let g:syntastic_python_checkers=['flake8']
+" let g:syntastic_python_python_exec = '/usr/bin/python3.6'
+
+" " let g:syntastic_javascript_eslint_exec = 'eslint_d'
+" " let g:syntastic_javascript_eslint_args = '--config '. $HOME .'/.eslintrc'
+" let g:syntastic_html_tidy_exec = 'tidy5'
+
+
+" "use project eslint
+" if executable('node_modules/.bin/standard')
+"   let b:syntastic_javascript_standard_exec = 'node_modules/.bin/standard'
+" endif
+" " go to next,previous eslint error
+" nnoremap ,> :lNext<CR>
+" nnoremap ,< :lPrevious<CR>
+" " debug syntastic
+" " let g:syntastic_debug=3
+
+" " show Syntastic Error Messages
+" nnoremap ,j :Errors<CR>
+" nnoremap ,rr :w !ruby -c<CR>
+
+
+
+" js-beautify
+let g:editorconfig_Beautifier = '~/.editorconfig'
+
+"vim-javascript plugin options
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+
+
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+
+
+
+" use javascript-library-syntax
+let g:used_javascript_libs = 'jquery,angularjs,react,redux'
+
+" for html files, 2 spaces
+" autocmd Filetype html setlocal softtabstop=2 shiftwidth=2 tabstop=2 et noautoindent
+" autocmd Filetype javascript setlocal softtabstop=2 shiftwidth=2 tabstop=2 et noautoindent
+
+" set shiftwidth=2               " Use indents of 2 spaces
+" set expandtab                   " Tabs are spaces, not tabs
+" set tabstop=2                   " An indentation every two columns
+" set softtabstop=2               " Let backspace delete indent
+
+
+" ###################
+" ### NerdCommenter #
+" ###################
+let g:NERDSpaceDelims=1
+let g:NERDDefaultAlign = 'left'
+let g:NERDTrimTraillingWhitespace=1
+map <slient ,c :NERDTreeClose<CR>
+map <leader>p :NERDTreeCWD
+
+
+" Copy Paste Between terminals"
+" vmap <silent> ,y y:new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/reg.txt<CR>
+" nmap <silent> ,y :new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/reg.txt<CR>
+" map <silent> ,p :sview ~/reg.txt<CR>"zdddG:q!<CR>:call setreg('"', @", @z"'"')<CR>p
+" map <silent> ,P :sview ~/reg.txt<CR>"zdddG:q!<CR>:call setreg('"', @", @z"'"')<CR>P
+
+
+
+
+" insert current date time while saving"
+"autocmd bufnewfile *.js so /home/monir/.vim/copyright-header.txt
+"autocmd bufnewfile *.js exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
+"autocmd bufnewfile *.js exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+"autocmd Bufwritepre,filewritepre *.js execute "normal ma"
+"autocmd Bufwritepre,filewritepre *.js exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+"autocmd bufwritepost,filewritepost *.js execute "normal `a""`"
+"
+"
+" view pdf in vim
+" :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -

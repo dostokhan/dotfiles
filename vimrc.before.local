@@ -1,1 +1,1 @@
-/home/monir/Work/dostokhan/utils/dotfiles/.vimrc.before.local
+let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'php', 'go']
