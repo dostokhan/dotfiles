@@ -99,6 +99,7 @@ export ANDROID_SDK=$HOME/Android/Sdk
 alias dosto="~/Work/dostokhan"
 alias imonir="~/Work/imonir"
 alias trash='mv -t /tmp'
+alias glg="git log --color --all --date-order --decorate --dirstat=lines,cumulative --stat | sed 's/\([0-9] file[s]\? .*)$\)/\1\n_______\n-------/g' | \less -R"
 
 alias dup='docker-compose up'
 alias ddown='docker-compose down'
