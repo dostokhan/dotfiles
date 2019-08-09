@@ -128,7 +128,8 @@
   `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
 ### Install Other softwares
-`yay -Sy google-chrome`
+`pacman -Sy docker nvm`
+`yay -Sy google-chrome `
 
 
 ## Laptop Extras
@@ -144,3 +145,6 @@
 `dhclient wlo1` # get ip
 ``
 NOTE: MAY NEED TO USE RFKILL. `rfkill unblock wifi`
+`sudo systemctl enable rfkill-unblock@wifi`
+`sudo systemctl start rfkill-unblock@wifi`
+
