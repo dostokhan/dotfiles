@@ -92,13 +92,13 @@
 
 ### install required softwares
   `sudo gvim pacman -Sy terminator consolas-font i3-wm dmenu i3status conky xorg xorg-xinit xorg-server 
-  openssh python-pip alsa-utils htop git zsh pcmanfm firefox flashplugin pepper-flash keepassx`
+  openssh python-pip alsa-utils htop git zsh pcmanfm firefox flashplugin pepper-flash keepass`
 
-### generate ssh
-  `ssh-keygen -t ed25519`
-### configure git
-  `git config --global user.email "email"`
-  `git config --global user.name "Moniruzzaman Monir"`
+### configure i3wm in `~/.xinitrc`
+  `#!/bin/bash 
+  exec i3` 
+  `chmod 744 ~/.xinitrc`
+  `touch ~/.Xauthority`
 
 ### install yaourt to install aur packages
 `mkdir ~/tmp `
@@ -107,15 +107,19 @@
 `cd yay`
 `makepkg -si`
 
+### generate ssh
+  `ssh-keygen -t ed25519`
+### add public key got github
+### configure git
+  `git config --global user.email "email"`
+  `git config --global user.name "Moniruzzaman Monir"`
 
-### configure i3wm in `~/.xinitrc`
-  `#!/bin/bash 
-  exec i3` 
 
 ### add ssh key to github.com
 ### Get Dotfiles
-  `sudo pacman -Sy python`
+  `pip install dotfiles`
   `git clone git@github.com:dostokhan/dotfiles.git ~/Dotfiles`
+  `dotfiles sync --force`
 
 ### reboot and login to window manager
 ### Install spf13 vim config
@@ -123,18 +127,20 @@
 ### Install oh-my-zsh
   `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
+### Install Other softwares
+`yay -Sy google-chrome`
 
 
-
-
-### dotfiles
-1. Install
-```bash
-yay -S dotfiles
-```
-2. clone repo and sync
-```bash
-dotfiles -s
-```
-### MORE
-https://github.com/jbernard/dotfiles
+## Laptop Extras
+### Wireless Connection during installation before exiting chroot or `install and use connman`
+`pacman -Sy iw wpa_supplicant`
+`iw dev` # get name of wireless interface
+`ip link set wlo1 up`
+`ip link show wlo1`
+`iw dev wlo1 scan`
+`wpa_passphrase my_essid my_passphrase > /etc/wpa_supplicant/my_essid.conf`
+`wpa_supplicant -c /etc/wpa_supplicant/my_essid.conf -i wlo1` # test connection
+`wpa_supplicant -B -c /etc/wpa_supplicant/my_essid.conf -i wlo1` # run in background
+`dhclient wlo1` # get ip
+``
+NOTE: MAY NEED TO USE RFKILL. `rfkill unblock wifi`
