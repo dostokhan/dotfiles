@@ -128,7 +128,7 @@
   `sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
 ### Install Other softwares
-`pacman -Sy docker nvm`
+`pacman -Sy docker nvm transmission`
 `yay -Sy google-chrome `
 
 

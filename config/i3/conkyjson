@@ -42,8 +42,8 @@ TEXT
 
 [
 
-{"full_text": "${downspeed enp2s0}", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"\#c3bf9f$" },
-{"full_text": "${upspeed enp2s0}", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"\#c3bf9f$" },
+{"full_text": "${downspeed wlo1}", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"\#c3bf9f$" },
+{"full_text": "${upspeed wlo1}", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"\#c3bf9f$" },
 
 {"full_text": "RAM:", "separator": false, "separator_block_width":3},
 {"full_text": "${memperc}%", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"${if_match ${memperc} < 33}\#7f9f7f${else}${if_match ${memperc} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
