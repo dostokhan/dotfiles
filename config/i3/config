@@ -192,9 +192,17 @@ bindsym $mod+Pause mode "$mode_system"
 
 bindsym Mod4+l exec i3lock
 
+# startup apps
 exec terminator
 # exec firefox
 exec google-chrome-stable
 
 assign [class="Terminator"] 1
-assign [class="Chrome"] 2
+assign [class="google-chrome-stable"] 2
+
+# brightness control
+bindsym $mod+F11 exec light -U 5
+bindsym $mod+F12 exec light -A 5
+# volume control
+ bindsym $mod+F2 exec amixer -D pulse sset Master '5%-'
+ bindsym $mod+F3 exec amixer -D pulse sset Master '5%+'

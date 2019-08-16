@@ -91,7 +91,7 @@
 
 
 ### install required softwares
-  `sudo gvim pacman -Sy terminator consolas-font i3-wm dmenu i3status conky xorg xorg-xinit xorg-server 
+  `sudo pacman -Sy terminator consolas-font i3-wm dmenu i3status i3lock conky xorg xorg-xinit xorg-server xorg-xev
   openssh python-pip alsa-utils htop git zsh pcmanfm firefox flashplugin pepper-flash keepass`
 
 ### configure i3wm in `~/.xinitrc`
@@ -175,5 +175,7 @@ Section "InputClass"
     Option "ClickMethod" "clickfinger"
 EndSection
 ```
-
+### for screen brightness
+`pacman -Sy light`
+`light -A 10` # increase brightness by 10%. -U for substracting
 
