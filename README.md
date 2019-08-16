@@ -146,7 +146,7 @@
 `dhclient wlo1` # get ip
 ``
 NOTE: MAY NEED TO USE RFKILL. `rfkill unblock wifi`
-put following in file `/etc/systemd/system/rfkill-unblock-wifi.service`
+#### put following in file `/etc/systemd/system/rfkill-unblock-wifi.service`
 ```conf
 [Unit]
 Description=RFKill-Unblock WiFi Devices
@@ -166,5 +166,14 @@ WantedBy=multi-user.target
 ### for touchpads
 `pacman -Sy xf86-input-libinput xorg-xinput libinput`
 `xinput list`
+#### put the following in `vim /usr/share/X11/xorg.conf.d/30-touchpad.conf`
+```conf
+Section "InputClass"
+    Identifier "devname"
+    Driver "libinput"
+    Option "Tapping" "on"
+    Option "ClickMethod" "clickfinger"
+EndSection
+```
 
 
