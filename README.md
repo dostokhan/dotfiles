@@ -129,7 +129,8 @@
 
 ### Install Other softwares
 `pacman -Sy docker nvm transmission`
-`yay -Sy google-chrome `
+`yay -Sy google-chrome postman consolas-font cloudcross`
+`npm install --global yarn`
 
 
 ## Laptop Extras
@@ -145,6 +146,25 @@
 `dhclient wlo1` # get ip
 ``
 NOTE: MAY NEED TO USE RFKILL. `rfkill unblock wifi`
-`sudo systemctl enable rfkill-unblock@wifi`
-`sudo systemctl start rfkill-unblock@wifi`
+put following in file `/etc/systemd/system/rfkill-unblock-wifi.service`
+```conf
+[Unit]
+Description=RFKill-Unblock WiFi Devices
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/rfkill unblock wifi
+ExecStop=
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+`sudo systemctl enable rfkill-unblock-wifi`
+`sudo systemctl start rfkill-unblock-wifi`
+
+### for touchpads
+`pacman -Sy xf86-input-libinput xorg-xinput libinput`
+`xinput list`
+
 
