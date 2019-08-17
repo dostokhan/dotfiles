@@ -91,8 +91,8 @@
 
 
 ### install required softwares
-  `sudo pacman -Sy terminator consolas-font i3-wm dmenu i3status i3lock conky xorg xorg-xinit xorg-server xorg-xev
-  openssh python-pip alsa-utils htop git zsh pcmanfm firefox flashplugin pepper-flash keepass`
+  `sudo pacman -Sy terminator consolas-font i3-wm dmenu i3status i3lock conky xorg xorg-xinit xorg-server xorg-xev unzip
+  openssh python-pip alsa-utils htop git zsh pcmanfm firefox flashplugin pepper-flash keepass docker`
 
 ### configure i3wm in `~/.xinitrc`
   `#!/bin/bash 
@@ -131,6 +131,13 @@
 `pacman -Sy docker nvm transmission`
 `yay -Sy google-chrome postman consolas-font cloudcross`
 `npm install --global yarn`
+
+### install python36
+`yay -Sy `
+### install docker-compose
+`sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+`
+
 
 
 ## Laptop Extras
