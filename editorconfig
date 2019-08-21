@@ -10,44 +10,34 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 indent_style = space
 indent_size = 2
+max_char = 80
 
 [**.js]
-indent_style = space
 indent_size = 2
 
 [**.json]
-indent_style = space
 indent_size = 2
 
 [**.jsx]
 e4x = true
-indent_style = space
 indent_size = 2
 
 [**.css]
-indent_style = space
 indent_size = 2
 
 [**.html]
-indent_style = space
 indent_size = 2
-max_char = 78
 brace_style = expand
 
 [**.yaml]
-indent_style = space
 indent_size = 2
-max_char = 78
 
-
+[**.yml]
+indent_size = 2
 
 [**.php]
-indent_style = space
 indent_size = 4
-max_char = 78
 
 [**.py]
-indent_style = space
 indent_size = 4
-max_char = 78
 
