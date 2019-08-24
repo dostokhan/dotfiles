@@ -1,4 +1,4 @@
-# Install Arch Linux 
+# Install Arch Linux
 
 ## Boot from live USB
 
@@ -10,20 +10,22 @@
   `fdisk l`
 ### create partitions with for GPT partition. remember to set UEFI boot from bios config
   `gdisk /dev/sda`
-### create `/efi` partition. 
+### create `/efi` partition.
   `/dev/sda1`
-### create `swap` partition. 
+### create `swap` partition.
   `/dev/sda2`
 ### create `/root` partition.
   `/dev/sda3`
 ### create `/home` partition.
-  `/dev/sda4`
-  ### format efi(550M), swap(ramsize) /root(30G), /home(rest)  partitions
-  `mkfs.ext4 /dev/sda3`
-  `mkfs.ext4 /dev/sda4`
-  `mkswap /dev/sda2`
-  `swapon /dev/sda2`
-  `mkfs.fat -F32 /dev/sda1`
+```bash
+/dev/sda4
+### format efi(550M), swap(ramsize) /root(30G), /home(rest)  partitions
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.fat -F32 /dev/sda1
+```
 ### mount partitions
   `mkdir /mnt/home`
   `mkdir /mnt/efi`
@@ -39,7 +41,7 @@
 
 ### Install OS
   `pacstrap /mnt base base-devel`
-### chroot 
+### chroot
   `arch-chroot /mnt`
 ### set timezone
   `ln -sf /usr/share/zoneinfo/Asia/Dhaka /etc/localtime`
@@ -67,25 +69,31 @@
   `genfstab -U /mnt >> /mnt/etc/fstab`
 
 ### Install and configure GRUb
-  `pacman -Sy grub efibootmanager`
-  `grub-install --target=x86_64-efi --efi-directory=/mnt/efi --bootloader-id=GRUB`
-  `grub-mkconfig -o /boot/grub/grub.cfg`
+```bash
+pacman -Sy grub efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/mnt/efi --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+```
 
 ### Exit, unmount partitions and reboot
-  `exit`
-  `umount -R /mnt`
-  `reboot`
+```bash
+exit
+umount -R /mnt
+reboot
+```
 
 
-## Configure system user 
+## Configure system user
 
-### create system user 
-  `pacman -Sy sudo`
-  `useradd --create-home username`
-  `usermod -aG wheel username`
-  `passwd username` # set password
-### add user to 
-  `visudo` # comment out wheel group config 
+### create system user
+```bash
+pacman -Sy sudo`
+useradd --create-home username`
+usermod -aG wheel username`
+passwd username` # set password
+```
+### add user to
+  `visudo` # comment out wheel group config
 ### login to system user
   `su username`
 
@@ -95,8 +103,8 @@
   openssh python-pip alsa-utils htop git zsh pcmanfm firefox flashplugin pepper-flash keepass docker`
 
 ### configure i3wm in `~/.xinitrc`
-  `#!/bin/bash 
-  exec i3` 
+  `#!/bin/bash
+  exec i3`
   `chmod 744 ~/.xinitrc`
   `touch ~/.Xauthority`
 
@@ -142,16 +150,17 @@
 
 ## Laptop Extras
 ### Wireless Connection during installation before exiting chroot or `install and use connman`
-`pacman -Sy iw wpa_supplicant`
-`iw dev` # get name of wireless interface
-`ip link set wlo1 up`
-`ip link show wlo1`
-`iw dev wlo1 scan`
-`wpa_passphrase my_essid my_passphrase > /etc/wpa_supplicant/my_essid.conf`
-`wpa_supplicant -c /etc/wpa_supplicant/my_essid.conf -i wlo1` # test connection
-`wpa_supplicant -B -c /etc/wpa_supplicant/my_essid.conf -i wlo1` # run in background
-`dhclient wlo1` # get ip
-``
+```bash
+pacman -Sy iw wpa_supplicant
+iw dev` # get name of wireless interface
+ip link set wlo1 up
+ip link show wlo1
+iw dev wlo1 scan
+wpa_passphrase my_essid my_passphrase > /etc/wpa_supplicant/my_essid.conf
+wpa_supplicant -c /etc/wpa_supplicant/my_essid.conf -i wlo1 # test connection
+wpa_supplicant -B -c /etc/wpa_supplicant/my_essid.conf -i wlo1 # run in background
+dhclient wlo1` # get ip
+```
 NOTE: MAY NEED TO USE RFKILL. `rfkill unblock wifi`
 #### put following in file `/etc/systemd/system/rfkill-unblock-wifi.service`
 ```conf
