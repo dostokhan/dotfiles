@@ -27,11 +27,13 @@ swapon /dev/sda2
 mkfs.fat -F32 /dev/sda1
 ```
 ### mount partitions
+```bash
   `mkdir /mnt/home`
   `mkdir /mnt/efi`
   `mnt /dev/sda3 /mnt`
   `mnt /dev/sda4 /mnt/home`
   `mnt /dev/sda1 /mnt/efi`
+```
 
 
 ## Install arch linux
@@ -53,12 +55,14 @@ mkfs.fat -F32 /dev/sda1
   `LANG=en_US.UTF-8`
   `LANG=en_GB.UTF-8`
 ### Set hostname and hosts
-  `#/etc/hostname`
-  `hostname`
-  `#/etc/hosts`
-  `127.0.0.1 localhost`
-  `::1		localhost`
-  `127.0.1.1 myhostname.localdomain myhostname`
+```bash
+#/etc/hostname
+hostname
+#/etc/hosts
+127.0.0.1 localhost
+::1		localhost
+127.0.1.1 myhostname.localdomain myhostname
+```
 ### dns config in `/etc/resolv.conf`
   `nameserver 8.8.8.8`
   `nameserver 8.8.4.4`
