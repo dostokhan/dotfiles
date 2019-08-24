@@ -156,7 +156,7 @@ passwd username` # set password
 ### Wireless Connection during installation before exiting chroot or `install and use connman`
 ```bash
 pacman -Sy iw wpa_supplicant
-iw dev` # get name of wireless interface
+iw dev # get name of wireless interface
 ip link set wlo1 up
 ip link show wlo1
 iw dev wlo1 scan
