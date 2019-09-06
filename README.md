@@ -141,7 +141,7 @@ passwd username` # set password
 
 ### Install Other softwares
 `pacman -Sy docker nvm transmission`
-`yay -Sy google-chrome postman consolas-font cloudcross`
+`yay -Sy google-chrome-stable postman consolas-font cloudcross grive`
 `npm install --global yarn`
 
 ### install python36
@@ -196,6 +196,6 @@ Section "InputClass"
 EndSection
 ```
 ### for screen brightness
-`pacman -Sy light`
+`pacman -Sy light redshift pulseaudio-alsa pulseaudio-bluetooth bluez-utils`
 `light -A 10` # increase brightness by 10%. -U for substracting
 
