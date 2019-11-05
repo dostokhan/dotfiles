@@ -9,6 +9,7 @@
   [[default]]
     [[[child1]]]
       parent = window0
+      profile = default
       type = Terminal
     [[[window0]]]
       parent = ""
@@ -20,5 +21,7 @@
     cursor_color = "#aaaaaa"
     font = Source Code Pro 14
     foreground_color = "#839496"
+    scroll_on_output = True
+    scrollback_infinite = True
     show_titlebar = False
     use_system_font = False
