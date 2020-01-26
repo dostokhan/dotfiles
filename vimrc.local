@@ -5,7 +5,7 @@ UnBundle 'scrooloose/syntastic'
 let g:indent_guides_enable_on_vim_startup = 0
 
 " wrap long lines
-set wrap linebreak nolis
+set wrap linebreak nolist
 
 set fileencoding=utf-8
 set encoding=utf-8
