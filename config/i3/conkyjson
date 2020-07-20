@@ -42,18 +42,18 @@ TEXT
 
 [
 
-{"full_text": "${downspeed wlan0}", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"\#c3bf9f$" },
-{"full_text": "${upspeed wlan0}", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"\#c3bf9f$" },
+{"full_text": "${downspeed wlp2s0}", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"\#c3bf9f$" },
+{"full_text": "${upspeed wlp2s0}", "min_width":"000%", "separator": true, "separator_block_width":20, "color":"\#c3bf9f$" },
+{"full_text": "${wireless_essid wlp2s0}", "separator": true, "separator_block_width":20, "color":"\#dca3a3"},
 
 {"full_text": "RAM:", "separator": false, "separator_block_width":3},
 {"full_text": "${memperc}%", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"${if_match ${memperc} < 33}\#7f9f7f${else}${if_match ${memperc} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
 
-{"full_text": "CPU:", "separator": false, "separator_block_width":3},
-{"full_text": "${cpu}%", "min_width":"000%", "separator": true, "separator_block_width":20, "color":"${if_match ${cpu} < 33}\#7f9f7f${else}${if_match ${cpu} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+{"full_text": "CPU:", "separator": false},
+{"full_text": "${cpu}%", "min_width":"000%", "separator": true, "color":"${if_match ${cpu} < 33}\#7f9f7f${else}${if_match ${cpu} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
 
-{"full_text": "${wireless_essid wlan0}", "separator": true, "separator_block_width":20, "color":"\#dca3a3"},
 
-{"full_text": "${time %b%e,%Y(%a)}", "separator": false, "separator_block_width":20, "color":"\#ffcfaf"},
+{"full_text": "${time %b%e,%Y(%a)}", "separator": false, "separator_block_width":10, "color":"\#ffcfaf"},
 {"full_text": "${time %I:%M %P}"},
 
 {"full_text": "${battery_percent BAT0}%", "color":"green"}

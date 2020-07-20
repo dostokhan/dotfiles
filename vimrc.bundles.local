@@ -7,3 +7,4 @@ Plugin 'yuttie/comfortable-motion.vim'
 Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'w0rp/ale'
+Plugin 'leafgarland/typescript-vim'
