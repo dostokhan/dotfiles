@@ -96,8 +96,6 @@ export ANDROID_SDK=$HOME/Android/Sdk
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias dosto="~/Work/dostokhan"
-alias imonir="~/Work/imonir"
 alias trash='mv -t /tmp'
 alias glg="git log --color --all --date-order --decorate --dirstat=lines,cumulative --stat | sed 's/\([0-9] file[s]\? .*)$\)/\1\n_______\n-------/g' | \less -R"
 
@@ -105,7 +103,17 @@ alias dup='docker-compose up'
 alias ddown='docker-compose down'
 alias dbuild='docker-compose build'
 # Set up Node Version Manager
-export NVM_DIR="$HOME/.nvm"                            # You can change this if you want.
-export NVM_SOURCE="/usr/share/nvm"                     # The AUR package installs it to here.
-[ -s "$NVM_SOURCE/nvm.sh" ] && . "$NVM_SOURCE/nvm.sh"  # Load NVM
+# export NVM_DIR="$HOME/.nvm"                            # You can change this if you want.
+# export NVM_SOURCE="/usr/share/nvm"                     # The AUR package installs it to here.
+# [ -s "$NVM_SOURCE/nvm.sh" ] && . "$NVM_SOURCE/nvm.sh"  # Load NVM
 
+export PATH="${PATH}:/opt"
+export PATH="${PATH}:/home/monir/.dropbox-dist"
+
+# ibus avro
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"

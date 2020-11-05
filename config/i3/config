@@ -170,7 +170,7 @@ bar {
 
 # screenshot shortcut
 bindsym Mod4+p exec scrot -s $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym Print exec scrot $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Print exec scrot -u $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
 bindsym Mod1+Print exec scrot -u $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
 bindsym Mod1+Shift+Print exec scrot -s $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
 
@@ -204,5 +204,6 @@ assign [class="google-chrome-stable"] 2
 bindsym $mod+F11 exec light -U 1
 bindsym $mod+F12 exec light -A 2
 # volume control
- bindsym $mod+F2 exec amixer -D pulse sset Master '5%-'
- bindsym $mod+F3 exec amixer -D pulse sset Master '5%+'
+bindsym $mod+F2 exec amixer -D pulse sset Master '5%-'
+bindsym $mod+F3 exec amixer -D pulse sset Master '5%+'
+
