@@ -35,30 +35,84 @@ conky.config = {
 
 conky.text = [[
 [
-    { "full_text": "/root ${fs_free /} " , "color": "\#ffffff" },
-    { "full_text": "/home ${fs_free /home} " , "color": "\#ffffff" },
+  {
+    "full_text": "/${fs_free /}/${fs_free /home}",
+    "color": "\#ffffff"
+  },
+
+  {
+    "full_text": "${downspeed enp2s0}",
+    "min_width":"000%",
+    "separator": false,
+    "separator_block_width":3,
+    "color":"\#c3bf9f$"
+  },
+
+  {
+    "full_text": "${upspeed enp2s0}",
+    "min_width":"000%",
+    "separator": true,
+    "separator_block_width":20,
+    "color":"\#c3bf9f$"
+  },
+
+  {
+    "full_text": "${wireless_essid wlo1}",
+    "separator": true,
+    "separator_block_width":20,
+    "color":"\#dca3a3"
+  },
+
+  {
+    "full_text": "RAM:",
+    "separator": false,
+    "separator_block_width":3
+  },
+
+  {
+    "full_text": "${memperc}%",
+    "min_width":"000%",
+    "separator": false,
+    "separator_block_width":3,
+    "color":"${if_match ${memperc} < 33}\#7f9f7f${else}${if_match ${memperc} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"
+  },
+
+  {
+    "full_text": "CPU:",
+    "separator": false
+  },
+
+  {
+    "full_text": "${cpu}%",
+    "min_width":"000%",
+    "separator": true,
+    "color":"${if_match ${cpu} < 33}\#7f9f7f${else}${if_match ${cpu} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"
+  },
 
 
-    { "full_text": "${downspeed enp2s0}", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"\#c3bf9f$" },
-    { "full_text": "${upspeed enp2s0}", "min_width":"000%", "separator": true, "separator_block_width":20, "color":"\#c3bf9f$" },
+  {
+    "full_text": "${time %b%e,%Y(%a)}",
+    "separator": false,
+    "separator_block_width":10,
+    "color":"\#ffcfaf"
+  },
 
+  {
+    "full_text": "${time %I:%M %P}"
+  },
 
-{"full_text": "RAM:", "separator": false, "separator_block_width":3},
-{"full_text": "${memperc}%", "min_width":"000%", "separator": false, "separator_block_width":3, "color":"${if_match ${memperc} < 33}\#7f9f7f${else}${if_match ${memperc} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
+  {
+    "full_text": "${battery_percent BAT0}%",
+    "color": ${if_match ${apcupsd_status}=='on-line'}"blue"${else}"red"${endif}
+  },
 
-{"full_text": "CPU:", "separator": false},
-{"full_text": "${cpu}%", "min_width":"000%", "separator": true, "color":"${if_match ${cpu} < 33}\#7f9f7f${else}${if_match ${cpu} > 66}\#dca3a3${else}\#c3bf9f${endif}${endif}"},
-
-
-{"full_text": "${time %b%e,%Y(%a)}", "separator": false, "separator_block_width":10, "color":"\#ffcfaf"},
-{"full_text": "${time %I:%M %P}"}
-
+  {
+    "full_text": "${battery}",
+    "color": "blue"
+  }
 
 ],
 ]];
 
 
 -- laptop blocks
---{"full_text": "${wireless_essid wlo1}", "separator": true, "separator_block_width":20, "color":"\#dca3a3"},
-
--- {"full_text": "${battery_percent BAT0}%",  "color": ${if_match ${apcupsd_status}=='on-line'}"blue"${else}"red"${endif} }, {"full_text": "${battery}",  "color": "blue" }
