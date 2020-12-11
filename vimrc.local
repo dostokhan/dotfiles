@@ -1,6 +1,5 @@
-" spf13 overrides
-UnBundle 'kchmck/vim-coffee-script'
-UnBundle 'scrooloose/syntastic'
+" spf13 overrides, unused from programming group
+UnBundle 'scrooloose/syntastic' 
 "disable indentation white spaces coloring
 let g:indent_guides_enable_on_vim_startup = 0
 
@@ -12,7 +11,8 @@ set fileencoding=utf-8
 set encoding=utf-8
 set nofoldenable
 set nospell
-colorscheme solarized
+colorscheme gruvbox 
+" colorscheme solarized
 set nobackup
 set noswapfile
 
@@ -36,53 +36,33 @@ let g:NERDTrimTraillingWhitespace=1
 map <slient ,c :NERDTreeClose<CR>
 map <leader>p :NERDTreeCWD
 
-
-
 " ##############################
-" ### ALE ######################
+" ### COC ######################
 " ##############################
-" Only run linters named in ale_linters settings.
-let g:ale_linters_explicit = 1
-" Enable ESLint only for JavaScript.
-let g:ale_linters = {'javascript': ['eslint'], 'php': ['phpcs']}
-let g:ale_fixers = {'php': ['php_cs_fixer']}
-" let g:ale_php_phpcs_standard = '~/.phpcs.xml'
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
+"
+" show definition
+nnoremap <silent> K :call CocAction('doHover')<CR>
+" show diagnostic
+nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
+" navigate to errors
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" show errors on save
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_text_changed = 0
-let g:ale_open_list = 0
-let g:ale_list_window_size = 5
+" code action
+nmap <leader>do <Plug>(coc-codeaction)
 
 
-" js-beautify
-let g:editorconfig_Beautifier = '~/.editorconfig'
+" automatically show either the diagnostic if it exists, otherwise the documentation 
+" function! ShowDocIfNoDiagnostic(timer_id)
+"   if (coc#util#has_float() == 0)
+"     silent call CocActionAsync('doHover')
+"   endif
+" endfunction
 
-"vim-javascript plugin options
-let g:javascript_conceal_null                 = "ø"
-let g:javascript_conceal_this                 = "@"
-let g:javascript_conceal_return               = "⇚"
-let g:javascript_conceal_undefined            = "¿"
-let g:javascript_conceal_NaN                  = "ℕ"
+" function! s:show_hover_doc()
+"   call timer_start(500, 'ShowDocIfNoDiagnostic')
+" endfunction
 
+" autocmd CursorHoldI * :call <SID>show_hover_doc()
+" autocmd CursorHold * :call <SID>show_hover_doc()
 
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
-" for json
-autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
-autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
-" for jsx
-autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
-autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
-
-
-" use javascript-library-syntax
-let g:used_javascript_libs = 'jquery,react,redux'
