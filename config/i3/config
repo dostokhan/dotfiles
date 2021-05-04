@@ -171,10 +171,9 @@ bar {
 # screenshot shortcut
 bindsym --release Print exec scrot -u 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/Screenshots' # All screens
 
-# bindsym Mod4+p exec scrot -s $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym Print exec scrot -u $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
-# bindsym Mod1+Print exec scrot -u $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
-# bindsym Mod1+Shift+Print exec scrot -s $HOME/Pictures/ScreenShots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Print exec scrot -u $HOME/screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+# bindsym Print       exec flameshot -p $HOME/screenshots/ full
+bindsym Shift+Print exec flameshot - $HOME/screenshots/ gui
 
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
@@ -206,6 +205,6 @@ assign [class="google-chrome-stable"] 2
 bindsym $mod+F11 exec light -U 1
 bindsym $mod+F12 exec light -A 2
 # volume control
-bindsym $mod+F2 exec amixer -D pulse sset Master '5%-'
-bindsym $mod+F3 exec amixer -D pulse sset Master '5%+'
+bindsym $mod+F2 exec amixer set Master '10%-'
+bindsym $mod+F3 exec amixer set Master '10%+'
 

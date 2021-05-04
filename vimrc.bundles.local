@@ -7,7 +7,10 @@ Plugin 'HerringtonDarkholme/yats.vim'
 
 Plugin 'jparise/vim-graphql'
 
-Plugin 'neoclide/coc.nvim'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 " colorscheme
 Plugin 'morhetz/gruvbox'
+
+Plugin 'editorconfig/editorconfig-vim'
+

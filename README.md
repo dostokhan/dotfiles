@@ -28,9 +28,9 @@ mkfs.fat -F32 /dev/sda1
 ```
 ### mount partitions
 ```bash
+  `mnt /dev/sda3 /mnt`
   `mkdir /mnt/home`
   `mkdir /mnt/efi`
-  `mnt /dev/sda3 /mnt`
   `mnt /dev/sda4 /mnt/home`
   `mnt /dev/sda1 /mnt/efi`
 ```
@@ -42,7 +42,7 @@ mkfs.fat -F32 /dev/sda1
   `curl -s "https://www.archlinux.org/mirrorlist/?protocol=https&use_mirror_status=on" | sed -e `s/^#Server/Server/` -e `/#/d` | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist`
 
 ### Install OS
-  `pacstrap /mnt base base-devel`
+  `pacstrap /mnt base base-devel linux linux-firmware`
 ### chroot
   `arch-chroot /mnt`
 ### set timezone
@@ -69,19 +69,20 @@ hostname
 ### set root password
   `passwd`
 
-### Generate fstab
-  `genfstab -U /mnt >> /mnt/etc/fstab`
-
 ### Install and configure GRUb
 ```bash
 pacman -Sy grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/mnt/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
+
+exit
 ```
 
-### Exit, unmount partitions and reboot
+### generate fstab, unmount partitions and reboot
 ```bash
-exit
+# Generate fstab
+genfstab -U /mnt >> /mnt/etc/fstab`
+
 umount -R /mnt
 reboot
 ```

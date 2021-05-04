@@ -34,7 +34,7 @@ let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign = 'left'
 let g:NERDTrimTraillingWhitespace=1
 map <slient ,c :NERDTreeClose<CR>
-map <leader>p :NERDTreeCWD
+map <leader>p :NERDTreeCWD<CR>
 
 " ##############################
 " ### COC ######################
@@ -47,9 +47,11 @@ nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 " navigate to errors
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
 " code action
 nmap <leader>do <Plug>(coc-codeaction)
+" rename symbol
+nmap <leader>rn <Plug>(coc-rename)
+
 
 
 " automatically show either the diagnostic if it exists, otherwise the documentation 

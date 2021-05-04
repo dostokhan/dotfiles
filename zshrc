@@ -80,6 +80,7 @@ export SSH_KEY_PATH="~/.ssh/id_ed25519"
 
 export PATH="${PATH}:$HOME/.local/bin"
 
+export hostname=$HOST
 
 # react-native android development
 export ANDROID_SDK=$HOME/Android/Sdk
@@ -106,6 +107,8 @@ alias dbuild='docker-compose build'
 # export NVM_DIR="$HOME/.nvm"                            # You can change this if you want.
 # export NVM_SOURCE="/usr/share/nvm"                     # The AUR package installs it to here.
 # [ -s "$NVM_SOURCE/nvm.sh" ] && . "$NVM_SOURCE/nvm.sh"  # Load NVM
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 export PATH="${PATH}:/opt"
 export PATH="${PATH}:/home/monir/.dropbox-dist"
@@ -117,3 +120,28 @@ export QT_IM_MODULE=ibus
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+
+# Open file with program
+alias -s md=vim
+alias -s json=vim
+alias -s {py,css,ts,html}=vim
+alias -s {mp4}=vlc
+
+# open ~/.zshrc in using the default editor specified in $EDITOR
+alias ec="$EDITOR $HOME/.zshrc"
+# source ~/.zshrc
+alias sc="source $HOME/.zshrc"
+
+
+# change brightness
+alias lowlight="echo 30000 | sudo tee /sys/class/backlight/intel_backlight/brightness"
+alias highlight="echo 120000 | sudo tee /sys/class/backlight/intel_backlight/brightness"
+
+
+# functions
+portcheck() {
+    sudo nc localhost $1 < /dev/null; echo $?
+}
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
