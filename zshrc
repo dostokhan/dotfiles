@@ -135,7 +135,11 @@ alias sc="source $HOME/.zshrc"
 
 # change brightness
 alias lowlight="echo 30000 | sudo tee /sys/class/backlight/intel_backlight/brightness"
+alias midlight="echo 70000 | sudo tee /sys/class/backlight/intel_backlight/brightness"
 alias highlight="echo 120000 | sudo tee /sys/class/backlight/intel_backlight/brightness"
+
+# rsync copy with progress
+alias copy="rsync -ah --progress"
 
 
 # functions
@@ -145,3 +149,6 @@ portcheck() {
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
+
+# autocompletion for kubectl
+source <(kubectl completion zsh)
